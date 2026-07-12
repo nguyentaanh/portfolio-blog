@@ -63,7 +63,7 @@ export const siteConfig: SiteConfig = {
 		{ href: '/terms', label: 'Terms' },
 	],
 	socialLinks: [
-		{ href: 'https://www.linkedin.com/in/taanhnguyentran/', label: 'LinkedIn' },
+		{ href: 'https://www.linkedin.com/in/taanhnguyen/', label: 'LinkedIn' },
 		{ href: 'https://www.behance.net/nguyentaanh68', label: 'Behance' },
 	],
 };
