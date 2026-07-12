@@ -2,11 +2,12 @@ import type { ImageMetadata } from 'astro';
 import bcombsImage from '../assets/images/bcombs.webp';
 import boardspeakImage from '../assets/images/boardspeak.webp';
 import nestaraImage from '../assets/images/nestara.webp';
-import nextpointImage from '../assets/images/nextpoint.webp';
+import gemxImage from '../assets/images/gemx-funnel.png';
 
 export type Project = {
 	name: string;
 	title: string;
+	
 	description: string;
 	background: 'lime' | 'cyan' | 'lavender' | 'mint';
 	variant: 'desktop' | 'split' | 'mobile' | 'board';
@@ -20,15 +21,15 @@ export const workPageSize = 10;
 
 export const projects: Project[] = [
 	{
-		name: 'Nextpoint',
-		title: 'Making legal transcripts easier to scan, summarize, and act on with AI',
+		name: 'GemX',
+		title: "Why GemX's activation drops — and what to do about it",
 		description:
-			'A transcript workflow rethought for faster review, clearer patterns, and less manual synthesis under pressure.',
+			'A data-driven investigation into a 61% drop-off in feature activation, and the root causes behind why only 6.7% of installs convert to paid.',
 		background: 'lime',
 		variant: 'desktop',
-		href: '/work/nextpoint',
-		image: nextpointImage,
-		alt: 'Nextpoint dashboard preview showing transcript and summary metrics',
+		href: '/work/gemx',
+		image: gemxImage,
+		alt: 'GemX activation funnel chart showing a 61% drop-off at the Feature Use step',
 		imageClass: 'project-preview-image',
 	},
 	{

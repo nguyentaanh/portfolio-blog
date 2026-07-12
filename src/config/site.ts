@@ -25,22 +25,24 @@ const envSiteUrl = process.env.SITE_URL ?? process.env.PUBLIC_SITE_URL;
 const normalizedSiteUrl = (envSiteUrl || defaultSiteUrl).replace(/\/+$/, '');
 
 export const siteConfig: SiteConfig = {
-	name: 'Maria',
-	title: 'Maria | Astro Theme for UI/UX Designer Portfolios',
+	name: 'Taanh',
+	title: 'Taanh | Personal Product Designer Portfolios',
 	description:
-		'A clean Astro theme for UI/UX designer portfolios, case studies, and modern product design presentations.',
+		'Taanh — UI/UX Product Designer crafting clear, user-centered digital products. Explore case studies in UX research, interface design, and design systems.',
 	// Set SITE_URL or PUBLIC_SITE_URL to keep canonicals, robots.txt, and the sitemap aligned in each environment.
 	siteUrl: normalizedSiteUrl,
-	email: 'hello@maria.com',
-	locale: 'en-US',
-	authorName: 'Maria',
-	authorRole: 'UX Designer',
+	email: 'nguyentaanh68@gmail.com',
+	locale: 'vi-VN',
+	authorName: 'Taanh',
+	authorRole: 'Product Designer',
 	keywords: [
-		'Astro UI UX portfolio theme',
-		'UI UX designer portfolio template',
-		'Astro portfolio template',
-		'product designer portfolio theme',
-		'case study portfolio theme',
+		'UI/UX Product Designer',
+		'Product Designer Portfolio',
+		'UX Research',
+		'Interface Design',
+		'Design Systems',
+		'Product Design',
+		'Case Studies',
 	],
 	ogImage: '/og-image.svg',
 	navLinks: [
@@ -49,7 +51,7 @@ export const siteConfig: SiteConfig = {
 		{ href: '/resume', label: 'Resume' },
 	],
 	extraPages: [
-		{ href: '/work/nextpoint', label: 'Case Study' },
+		{ href: '/work/gemx', label: 'Case Study' },
 		{ href: '/cookies', label: 'Cookies' },
 		{ href: '/privacy', label: 'Privacy' },
 		{ href: '/terms', label: 'Terms' },
@@ -61,7 +63,7 @@ export const siteConfig: SiteConfig = {
 		{ href: '/terms', label: 'Terms' },
 	],
 	socialLinks: [
-		{ href: 'https://www.linkedin.com/', label: 'LinkedIn' },
-		{ href: 'https://dribbble.com/', label: 'Dribbble' },
+		{ href: 'https://www.linkedin.com/in/taanhnguyentran/', label: 'LinkedIn' },
+		{ href: 'https://www.behance.net/nguyentaanh68', label: 'Behance' },
 	],
 };

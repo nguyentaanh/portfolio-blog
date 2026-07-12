@@ -1,0 +1,885 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import { siteConfig } from '../../config/site';
+import gemxFunnelImage from '../../assets/images/gemx-funnel.png';
+import gemxFlowMapImage from '../../assets/images/gemx-flow-map.png';
+import gemxSubscriptionTableImage from '../../assets/images/gemx-subscription-table.png';
+import gemxIssuesSummaryImage from '../../assets/images/gemx-issues-summary.png';
+
+const highlights = [
+	{ label: 'Client', value: 'GemX' },
+	{ label: 'Status', value: 'Part 1 of 2' },
+	{ label: 'Role', value: 'Product Designer' },
+];
+
+const processSteps = [
+	{
+		number: '1',
+		title: 'Define the flow users go through at the "Feature use" step',
+		description:
+			'We not only mapped the screens inside the GemX app, but also tracked the journey across GemPages and Shopify. Within this case study, I only cover the issues on GemX.',
+		done: true,
+	},
+	{
+		number: '2',
+		title: 'Identify problems',
+		description:
+			'After defining all screens and steps within "Feature use", we identified issues based on customer support conversations, FullStory recordings, and a UI heuristic evaluation.',
+		done: true,
+	},
+	{
+		number: '3',
+		title: 'Prioritize problems',
+		description:
+			'After collecting issues, we prioritized them based on team effort and technical constraints, focusing on the most impactful ones first.',
+		done: true,
+	},
+	{
+		number: '4',
+		title: 'Competitor research',
+		description:
+			'For the highest-priority issues, we reviewed how competitors handle them and captured strengths and weaknesses for each app.',
+		done: false,
+	},
+	{
+		number: '5',
+		title: 'Propose solutions',
+		description: 'Includes flow and UI solutions for the prioritized problems.',
+		done: false,
+	},
+	{
+		number: '6',
+		title: 'Track impact',
+		description:
+			'We continued to monitor the quit rate at the "Feature use" step, with a goal to reduce it from 61% → 40%.',
+		done: false,
+	},
+];
+
+const caseStudyUrl = new URL('/work/gemx', siteConfig.siteUrl).toString();
+const caseStudySchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: siteConfig.siteUrl,
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Work',
+				item: new URL('/work', siteConfig.siteUrl).toString(),
+			},
+			{
+				'@type': 'ListItem',
+				position: 3,
+				name: 'GemX Case Study',
+				item: caseStudyUrl,
+			},
+		],
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'CreativeWork',
+		name: 'GemX Case Study',
+		headline: "Why GemX's Activation Drops & What to Do (Part 1)",
+		description:
+			"A data-driven investigation into why only 6.7% of GemX installs convert to paid, and why 61% of users quit at the Feature Use step.",
+		url: caseStudyUrl,
+		author: {
+			'@type': 'Person',
+			name: siteConfig.authorName,
+		},
+		isPartOf: {
+			'@type': 'WebSite',
+			name: siteConfig.name,
+			url: siteConfig.siteUrl,
+		},
+		inLanguage: siteConfig.locale,
+	},
+];
+---
+
+<Layout
+	title="GemX Case Study | Taanh, Product Designer"
+	description="Why only 6.7% of GemX installs convert to paid, and why 61% of users quit at the Feature Use step — a data-driven activation investigation."
+	ogType="article"
+	ogImageAlt="GemX activation funnel showing where users drop off between install and paid subscription"
+	schema={caseStudySchema}
+>
+	<a class="skip-link" href="#main-content">Skip to content</a>
+
+	<div class="case-page">
+		<SiteHeader />
+
+		<main id="main-content">
+
+			<!-- Hero -->
+			<section class="case-hero">
+				<p class="eyebrow">
+					<a class="breadcrumb-link" href="/work">Case Study</a>
+					<span class="breadcrumb-separator" aria-hidden="true">/</span>
+					<span>GemX</span>
+				</p>
+				<h1 class="display-title">Why GemX's activation drops — and what to do about it.</h1>
+				<div class="hero-subgrid">
+					<p class="hero-text">
+						GemX is a CRO & A/B testing app that helps Shopify merchants improve conversion
+						rates by tracking real customer behavior across layout, content, offers, and the
+						sales funnel. After more than a year on the Shopify App Store, only 6.7% of
+						installs convert to paid — and 61% of users quit at a single step: Feature Use.
+					</p>
+				</div>
+			</section>
+
+			<!-- Meta strip -->
+			<section class="meta-strip" id="overview">
+				{highlights.map((item) => (
+					<div class="meta-item">
+						<p class="meta-label">{item.label}</p>
+						<p class="meta-value">{item.value}</p>
+					</div>
+				))}
+			</section>
+
+			<!-- ── OVERVIEW ── -->
+			<section class="chapter-section">
+				<p class="chapter-kicker">Overview</p>
+
+				<!-- 1. Introduction -->
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">1. Introduction</h2>
+					<div class="chapter-body">
+						<p>
+							GemX: CRO & A/B Testing is an app that helps Shopify merchants improve
+							conversion rates by tracking real customer behavior. It enables A/B testing
+							across layout, content, offers, and the entire sales funnel.
+						</p>
+					</div>
+				</div>
+
+				<!-- 2. Observations -->
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">2. Observations</h2>
+					<div class="chapter-body">
+						<p class="body-label">GemX's underperformance.</p>
+						<ul class="body-list">
+							<li>
+								After more than a year on the Shopify App Store, the conversion rate from
+								Installed user → Paid user is only 6.7%. This suggests that during usage,
+								GemX users are facing issues or getting stuck at some step.
+							</li>
+							<li>
+								By looking at the GemX user funnel, we found the main drop-off point is
+								Feature adoption (Feature usage rate):
+							</li>
+						</ul>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={gemxFunnelImage}
+								alt="GemX activation funnel: Install 100%, App Access 77%, Onboarding 68%, Feature Use 27%, Subscribe 6.7% — with a 61% drop at Feature Use"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+							<p class="image-caption">Data shows 61% of users quit at the "Feature use" step.</p>
+						</div>
+
+						<div class="callout">
+							<span class="callout-icon" aria-hidden="true">💡</span>
+							<p>
+								What does this mean? Out of every 100 users who install the app, only 29
+								use a feature. The other 61 do not use any feature and leave the app.
+							</p>
+						</div>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={gemxSubscriptionTableImage}
+								alt="Table showing subscription rates: all users 9.75%, users who adopted features ~37%, users stuck after onboarding ~1.5%"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+							<p class="image-caption">Data also shows that ~37% of users who adopt a feature subscribe to a paid plan.</p>
+						</div>
+
+						<div class="insight-block">
+							<p class="insight-line">
+								→ If we increase the "Feature use" rate, revenue will increase, directly
+								impacting the business.
+							</p>
+							<p class="insight-line">
+								→ So how can we get more users to use the features?
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── PROCESS ── -->
+			<section class="chapter-section" id="process">
+				<p class="chapter-kicker">Process</p>
+				<div class="process-grid">
+					{processSteps.map((step) => (
+						<div class={`process-card ${step.done ? '' : 'process-card--upcoming'}`}>
+							<p class="process-card-number">{step.number}</p>
+							<p class="process-card-title">
+								{step.title}
+								{!step.done && <span class="badge-soon">Coming soon</span>}
+							</p>
+							<p class="process-card-desc">{step.description}</p>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- ── DETAILS ── -->
+			<section class="chapter-section" id="details">
+				<p class="chapter-kicker">Details</p>
+
+				<!-- 1️⃣ Define the flow -->
+				<div class="detail-step">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">1</span>
+						<h2 class="detail-step-title">Define the flow users go through at the "Feature use" step</h2>
+					</div>
+					<div class="detail-step-body">
+						<p>
+							As mentioned above, out of every 100 users who install, only 29 use a
+							feature. The remaining 61 do not use it, cannot use it, or do not need it.
+						</p>
+						<p>So what counts as "Using a feature"?</p>
+						<p>→ We aligned that a user is considered to have "used a feature" if they meet at least one of these conditions:</p>
+						<ul class="body-list">
+							<li>Successfully activate an A/B test experiment</li>
+							<li>View the analytics report of a Page (not addressed in this case study)</li>
+						</ul>
+						<p>From that, we can frame the question as:</p>
+
+						<div class="callout">
+							<span class="callout-icon" aria-hidden="true">💡</span>
+							<p>What problems are users facing when trying to activate an A/B testing experiment?</p>
+						</div>
+
+						<p>
+							Based on this question, I summarized the screens users go through in the
+							flow to activate an A/B testing experiment:
+						</p>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={gemxFlowMapImage}
+								alt="Flow map of the onboarding and experiment-creation screens users pass through in GemX, GemPages, and Shopify"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+						</div>
+
+						<p>After that, I needed to collect issues within this flow.</p>
+					</div>
+				</div>
+
+				<!-- 2️⃣ Identify problems -->
+				<div class="detail-step">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">2</span>
+						<h2 class="detail-step-title">Identify problems</h2>
+					</div>
+					<div class="detail-step-body">
+						<p class="body-label">Issue sources:</p>
+						<ul class="body-list">
+							<li>
+								<strong>Customer Support Convos:</strong> I used NotebookLM and summarized
+								40 conversations related to setting up an A/B experiment out of 267
+								conversations from the last 3 months.
+							</li>
+							<li>
+								<strong>FullStory:</strong> For conversations where information was unclear,
+								we reviewed FullStory recordings to see where users got stuck. We needed to
+								watch enough sessions to identify recurring patterns across many users.
+							</li>
+							<li>
+								<strong>UI Heuristic Evaluation:</strong> To stay objective, we reviewed
+								each other's screens (and also our own).
+							</li>
+						</ul>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={gemxIssuesSummaryImage}
+								alt="Spreadsheet summarising all identified issues from customer support conversations and FullStory sessions"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+							<p class="image-caption">Tổng hợp issues.</p>
+						</div>
+
+						<p class="body-label">Observed patterns:</p>
+						<ol class="body-list body-list--ordered">
+							<li>
+								<strong>8/40 (20%)</strong> issues followed the same pattern: Users asked
+								CS questions like "How to test 2 URLs against each other?"
+								<ul class="body-list body-list--nested">
+									<li>
+										However, GemX currently only supports Template testing, not URL
+										testing.
+									</li>
+								</ul>
+							</li>
+							<li>
+								<strong>15/40 (37%)</strong> issues followed the same pattern: Users asked
+								how to set up an experiment to test Product details (image, price, title,
+								etc.), which GemX also does not currently support.
+							</li>
+						</ol>
+
+						<p>
+							At this point, I wondered: "This is the group of users who reached out to
+							CS. What about the group that did not reach out to CS? Do they face similar
+							issues?"
+						</p>
+						<p>
+							So I observed FullStory sessions for 50 out of 800 users who "have never
+							activated any experiment" and "are not in the CS support list". Here is
+							what we observed:
+						</p>
+						<ol class="body-list body-list--ordered">
+							<li>
+								<strong>48/50 (96%)</strong> users did not prepare a template during
+								experiment setup, while in the "Reached CS" group, 100% had templates
+								prepared. This could mean the "Did not reach CS" group does not have a
+								clear testing idea before setup. It could also mean they do not know what
+								GemX requires before they can set up an experiment.
+							</li>
+							<li>
+								<strong>Hypothesis:</strong> Based on evaluation, the time needed to set
+								up an A/B experiment is quite long. During that process, users do not
+								understand the value or output GemX provides → they drop off.
+							</li>
+						</ol>
+
+						<div class="callout">
+							<span class="callout-icon" aria-hidden="true">💡</span>
+							<div>
+								<p class="callout-heading">Summary of root causes behind the low feature activation rate:</p>
+								<ol class="callout-list">
+									<li>
+										<strong>Core problem:</strong> GemX does not cover two key use cases
+										yet: URL testing and Product details testing.
+									</li>
+									<li>
+										A large number of new users do not know what to A/B test.
+									</li>
+									<li>
+										<strong>Hypothesis:</strong> Users lose motivation because the setup
+										process is long and they do not see value early.
+									</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 3️⃣ Prioritize problems -->
+				<div class="detail-step">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">3</span>
+						<h2 class="detail-step-title">Prioritize problems</h2>
+					</div>
+					<div class="detail-step-body">
+						<p>
+							After discussion with the PM and Tech Leads, we agreed to address two
+							issues:
+						</p>
+						<ul class="body-list">
+							<li>"GemX does not cover enough use cases"</li>
+							<li>"Users lose motivation because the setup is too long"</li>
+						</ul>
+						<p>
+							"New users do not know what to test" requires a solution like an "Idea hub"
+							with best-practice inspirations, which needs significant research effort →
+							Pending.
+						</p>
+					</div>
+				</div>
+
+				<!-- 4️⃣ Competitor research -->
+				<div class="detail-step detail-step--last">
+					<div class="detail-step-rail">
+						<span class="detail-step-num detail-step-num--upcoming">4</span>
+						<h2 class="detail-step-title">
+							Competitor research
+							<span class="badge-soon">Coming soon</span>
+						</h2>
+					</div>
+					<div class="detail-step-body">
+						<p>As mentioned above, GemX is currently facing these issues:</p>
+						<ul class="body-list">
+							<li>
+								It does not cover two important use cases: URL testing and Product details
+								testing.
+								<ul class="body-list body-list--nested">
+									<li>Direction: Add these two use cases.</li>
+								</ul>
+							</li>
+							<li>
+								Users lose motivation because the setup process is long.
+								<ul class="body-list body-list--nested">
+									<li>Shorten the first experiment setup.</li>
+									<li>Show GemX's value during onboarding.</li>
+								</ul>
+							</li>
+						</ul>
+						<p class="closing-note">
+							The detailed research and design will be presented in Part 2.
+						</p>
+					</div>
+				</div>
+
+			</section>
+
+		</main>
+	</div>
+</Layout>
+
+<style>
+	.case-page {
+		position: relative;
+		width: min(calc(100% - 3rem), 78rem);
+		margin: 0 auto;
+		padding: 1.25rem 0 5rem;
+	}
+
+	/* ── Shared type tokens ── */
+	.eyebrow,
+	.meta-label,
+	.chapter-kicker {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		line-height: 1.4;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		margin: 0;
+	}
+
+	/* ── Hero ── */
+	.case-hero {
+		padding: 6rem 0 4rem;
+	}
+
+	.eyebrow {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+		margin-bottom: 1.1rem;
+	}
+
+	.eyebrow a {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.1rem 0;
+		color: var(--foreground);
+		text-decoration: none;
+		transition: opacity 120ms ease;
+		font-weight: 600;
+	}
+
+	.eyebrow a:hover,
+	.eyebrow a:focus-visible {
+		opacity: 0.68;
+	}
+
+	.breadcrumb-separator {
+		color: var(--muted-foreground);
+	}
+
+	h1,
+	h2 {
+		margin: 0;
+		color: var(--foreground);
+	}
+
+	.hero-subgrid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+		gap: 2rem;
+		margin-top: 1.75rem;
+	}
+
+	.hero-text {
+		font-size: 1.08rem;
+		line-height: 1.7;
+		margin: 0;
+	}
+
+	/* ── Meta strip ── */
+	.meta-strip {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 2rem;
+		padding: 1.5rem 0 0.5rem;
+		border-top: 1px solid var(--border);
+	}
+
+	.meta-item {
+		padding-top: 0.75rem;
+	}
+
+	.meta-label {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		margin: 0;
+	}
+
+	.meta-value {
+		margin: 0.35rem 0 0;
+		font-size: 1.15rem;
+		font-weight: 700;
+	}
+
+	/* ── Chapter sections (Overview / Process / Details) ── */
+	.chapter-section {
+		padding: 3.5rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.chapter-kicker {
+		display: block;
+		margin-bottom: 2rem;
+	}
+
+	/* ── Chapter subsections (numbered headings) ── */
+	.chapter-subsection {
+		display: grid;
+		grid-template-columns: 16rem minmax(0, 1fr);
+		gap: 2rem;
+		padding: 2rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.chapter-subsection:first-of-type {
+		border-top: 0;
+		padding-top: 0;
+	}
+
+	.chapter-subheading {
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		padding-top: 0.1rem;
+	}
+
+	.chapter-body {
+		display: grid;
+		gap: 1rem;
+		max-width: 52rem;
+	}
+
+	.chapter-body p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	/* ── Images ── */
+	.image-block {
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	.case-image {
+		width: 100%;
+		border: 1px solid var(--border);
+		border-radius: 1.25rem;
+		box-shadow: var(--shadow-large);
+	}
+
+	.image-caption {
+		font-size: 0.9rem !important;
+		color: var(--muted-foreground);
+		line-height: 1.5 !important;
+	}
+
+	/* ── Callout ── */
+	.callout {
+		display: flex;
+		gap: 0.85rem;
+		padding: 1rem 1.25rem;
+		background: var(--muted);
+		border-radius: 0.75rem;
+		border: 1px solid var(--border);
+	}
+
+	.callout-icon {
+		font-size: 1.1rem;
+		line-height: 1.7;
+		flex-shrink: 0;
+	}
+
+	.callout p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	.callout-heading {
+		font-weight: 700;
+		margin-bottom: 0.5rem !important;
+	}
+
+	.callout-list {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	.callout-list li {
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	/* ── Insight lines ── */
+	.insight-block {
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	.insight-line {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+		font-weight: 600;
+	}
+
+	/* ── Body lists ── */
+	.body-label {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+		font-weight: 700;
+	}
+
+	.body-list {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.body-list--ordered {
+		list-style: decimal;
+	}
+
+	.body-list li {
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	.body-list--nested {
+		margin-top: 0.4rem;
+		list-style: disc;
+	}
+
+	/* ── Process grid ── */
+	.process-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+
+	.process-card {
+		padding: 1.5rem;
+		background: var(--muted);
+		border: 1px solid var(--border);
+		border-radius: 1rem;
+		display: grid;
+		gap: 0.5rem;
+		align-content: start;
+	}
+
+	.process-card--upcoming {
+		opacity: 0.55;
+	}
+
+	.process-card-number {
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+	}
+
+	.process-card-title {
+		margin: 0;
+		font-size: 0.98rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1.35;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.process-card-desc {
+		margin: 0;
+		font-size: 0.92rem;
+		line-height: 1.65;
+		color: var(--muted-foreground);
+	}
+
+	/* ── Coming soon badge ── */
+	.badge-soon {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.15rem 0.55rem;
+		background: var(--muted);
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--muted-foreground);
+		white-space: nowrap;
+		font-family: var(--font-mono);
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	/* ── Detail steps ── */
+	.detail-step {
+		display: grid;
+		grid-template-columns: 16rem minmax(0, 1fr);
+		gap: 2rem;
+		padding: 2.5rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.detail-step--last {
+		border-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.detail-step-rail {
+		align-self: start;
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	.detail-step-num {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.75rem;
+		height: 1.75rem;
+		background: var(--foreground);
+		color: var(--background);
+		border-radius: 50%;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 700;
+		flex-shrink: 0;
+	}
+
+	.detail-step-num--upcoming {
+		background: var(--muted);
+		color: var(--muted-foreground);
+		border: 1px solid var(--border);
+	}
+
+	.detail-step-title {
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1.4;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.detail-step-body {
+		display: grid;
+		gap: 1rem;
+		max-width: 52rem;
+	}
+
+	.detail-step-body p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	.closing-note {
+		color: var(--muted-foreground);
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 980px) {
+		.hero-subgrid,
+		.meta-strip {
+			grid-template-columns: 1fr;
+		}
+
+		.process-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 720px) {
+		.case-page {
+			width: min(calc(100% - 1.5rem), 78rem);
+			padding-top: 1rem;
+		}
+
+		.case-hero {
+			padding: 4rem 0 3rem;
+		}
+
+		.chapter-subsection,
+		.detail-step {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.process-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.hero-text,
+		.chapter-body p,
+		.detail-step-body p,
+		.body-list li,
+		.callout p,
+		.callout-list li,
+		.insight-line {
+			font-size: 1.05rem;
+		}
+	}
+</style>
