@@ -1,0 +1,868 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import { siteConfig } from '../../config/site';
+import ieContextsImage from '../../assets/images/ie-contexts.png';
+import ieThreedotImage from '../../assets/images/ie-threedot.png';
+import ieRenameImage from '../../assets/images/ie-rename.png';
+import ieTriggerImage from '../../assets/images/ie-trigger.png';
+import ieTopbarImage from '../../assets/images/ie-topbar.png';
+import ieTipImage from '../../assets/images/ie-tip.png';
+
+const highlights = [
+	{ label: 'Product', value: 'GemPages' },
+	{ label: 'Role', value: 'Product Designer' },
+	{ label: 'Focus', value: 'Competitor Research · UI Design' },
+];
+
+const processSteps = [
+	{
+		number: '1',
+		title: 'Collect issues and summarize contexts',
+		description:
+			'Compile all issues related to the "awareness" problem reported to support, then group them into the contexts where users need to export / import.',
+	},
+	{
+		number: '2',
+		title: 'Competitor research',
+		description:
+			'For each context, research competitors with export / import (or similar) features to see how they handle the awareness problem.',
+	},
+	{
+		number: '3',
+		title: 'Conclusion',
+		description:
+			'Draw insights from the collected issues and competitor comparison to decide where and how to surface the feature.',
+	},
+	{
+		number: '4',
+		title: 'Solutions',
+		description: 'Propose the user flow and UI solutions for each context.',
+	},
+];
+
+const caseStudyUrl = new URL('/work/import-export', siteConfig.siteUrl).toString();
+const caseStudySchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: siteConfig.siteUrl,
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Work',
+				item: new URL('/work', siteConfig.siteUrl).toString(),
+			},
+			{
+				'@type': 'ListItem',
+				position: 3,
+				name: 'Import/Export Template Recognition Case Study',
+				item: caseStudyUrl,
+			},
+		],
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'CreativeWork',
+		name: 'Improve Import/Export Template Recognition',
+		headline: 'Improving Import/Export template recognition on GemPages',
+		description:
+			'A competitor-research-driven case study on solving the awareness problem for GemPages Export/Import, so users can find the feature in the contexts where they need it most.',
+		url: caseStudyUrl,
+		author: {
+			'@type': 'Person',
+			name: siteConfig.authorName,
+		},
+		isPartOf: {
+			'@type': 'WebSite',
+			name: siteConfig.name,
+			url: siteConfig.siteUrl,
+		},
+		inLanguage: siteConfig.locale,
+	},
+];
+---
+
+<Layout
+	title="Improve Import/Export Template Recognition | Taanh, Product Designer"
+	description="A competitor-research case study on solving the awareness problem for GemPages Export/Import, so users find the feature exactly when they need it."
+	ogType="article"
+	ogImageAlt="Import/Export template recognition case study for GemPages"
+	schema={caseStudySchema}
+>
+	<a class="skip-link" href="#main-content">Skip to content</a>
+
+	<div class="case-page">
+		<SiteHeader />
+
+		<main id="main-content">
+
+			<!-- Hero -->
+			<section class="case-hero">
+				<p class="eyebrow">
+					<a class="breadcrumb-link" href="/work">Case Study</a>
+					<span class="breadcrumb-separator" aria-hidden="true">/</span>
+					<span>Import/Export</span>
+				</p>
+				<h1 class="display-title">Improving Import/Export template recognition.</h1>
+				<div class="hero-subgrid">
+					<p class="hero-text">
+						Export / Import lets users move templates between stores. Two months after
+						launch, the feature had an awareness problem — people who needed it could not
+						find it. So the goal was to surface it in the exact contexts where users reach
+						for it.
+					</p>
+				</div>
+			</section>
+
+			<!-- Meta strip -->
+			<section class="meta-strip" id="overview">
+				{highlights.map((item) => (
+					<div class="meta-item">
+						<p class="meta-label">{item.label}</p>
+						<p class="meta-value">{item.value}</p>
+					</div>
+				))}
+			</section>
+
+			<!-- ── OVERVIEW ── -->
+			<section class="chapter-section">
+				<p class="chapter-kicker">Overview</p>
+
+				<!-- 1. Introduction -->
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">1. Introduction</h2>
+					<div class="chapter-body">
+						<p>
+							Export / Import templates is a feature that helps users move templates between
+							stores. They export templates from the source store to their local machine,
+							then import them into the destination store.
+						</p>
+						<p>
+							After two months in the market, this feature has an awareness problem: users
+							who need Export / Import do not know where to find it.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── PROCESS ── -->
+			<section class="chapter-section" id="process">
+				<p class="chapter-kicker">Process</p>
+				<div class="process-grid">
+					{processSteps.map((step) => (
+						<div class="process-card">
+							<p class="process-card-number">{step.number}</p>
+							<p class="process-card-title">{step.title}</p>
+							<p class="process-card-desc">{step.description}</p>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- ── DETAILS ── -->
+			<section class="chapter-section" id="details">
+				<p class="chapter-kicker">Details</p>
+
+				<!-- 1️⃣ Collect issues -->
+				<div class="detail-step">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">1</span>
+						<h2 class="detail-step-title">Collect issues and summarize contexts</h2>
+					</div>
+					<div class="detail-step-body">
+						<div class="callout">
+							<span class="callout-icon" aria-hidden="true">👉</span>
+							<p>
+								Although Export and Import are different functions, they use the same approach.
+								In this case study, I focus only on the Export flow.
+							</p>
+						</div>
+						<p>
+							To be effective, we need to surface the feature at the moment users need it
+							most. So the key question is:
+							<strong>"In which context do users need Export the most?"</strong>
+						</p>
+						<p>
+							To answer this, I collected 75 issues since launch related to users not being
+							able to find this feature.
+						</p>
+						<p>After analysis, I grouped the issues into two contexts:</p>
+						<ol class="body-list body-list--ordered">
+							<li><strong>Users want to transfer a template from the dashboard.</strong></li>
+							<li>
+								<strong>After editing a template in the editor, users want to transfer that
+								template immediately.</strong>
+							</li>
+						</ol>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={ieContextsImage}
+								alt="Breakdown of the 75 collected issues grouped into the two contexts where users need Export"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+							<p class="image-caption">
+								The remaining 28% are issues without enough information to classify.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- 2️⃣ Competitor research -->
+				<div class="detail-step">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">2</span>
+						<h2 class="detail-step-title">Competitor research</h2>
+					</div>
+					<div class="detail-step-body">
+						<div class="callout">
+							<span class="callout-icon" aria-hidden="true">💡</span>
+							<p>Research direct competitors that have an Export feature (or something similar).</p>
+						</div>
+						<p>Three competitors were selected:</p>
+						<ol class="body-list body-list--ordered">
+							<li>Ecomposer</li>
+							<li>Pagefly</li>
+							<li>Foxify</li>
+						</ol>
+						<p>
+							In addition to these three, I also reviewed GemPages v7 (current) and GemPages v6
+							(legacy) to:
+						</p>
+						<ul class="body-list body-list--nested">
+							<li>Better understand the current problem</li>
+							<li>Compare against competitors</li>
+						</ul>
+
+						<p class="body-label">Context 1: Users want to transfer a template from the dashboard</p>
+						<div class="table-scroll">
+							<table class="compare-table">
+								<thead>
+									<tr>
+										<th></th>
+										<th>GemPages v6</th>
+										<th>GemPages v7</th>
+										<th>Ecomposer</th>
+										<th>Pagefly</th>
+										<th>Foxify</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">Number of triggers</th>
+										<td>0</td>
+										<td>2</td>
+										<td>0</td>
+										<td>2</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<th scope="row">Description</th>
+										<td></td>
+										<td>
+											The Export trigger is hidden. Users must select a page item or find it
+											under "more actions". The term "Export" is hard to understand and does not
+											match users' keywords (Transfer, share).
+										</td>
+										<td></td>
+										<td>
+											Export and Import actions are placed near the main CTA in the Page List
+											tab → easier to find. The term "Export" is hard to understand and does not
+											match users' keywords (Transfer).
+										</td>
+										<td>
+											Users must select a page to see the Export action. The term "Export" is
+											hard to understand and does not match users' keywords (Transfer).
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">Assessment</th>
+										<td></td>
+										<td>Hard to find</td>
+										<td></td>
+										<td>Medium to find</td>
+										<td>Hard to find</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<p class="body-label">
+							Context 2: After editing a template in the editor, users want to transfer it immediately
+						</p>
+						<div class="table-scroll">
+							<table class="compare-table">
+								<thead>
+									<tr>
+										<th></th>
+										<th>GemPages v6</th>
+										<th>GemPages v7</th>
+										<th>Ecomposer</th>
+										<th>Pagefly</th>
+										<th>Foxify</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">Number of triggers</th>
+										<td>1</td>
+										<td></td>
+										<td>1</td>
+										<td>0</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<th scope="row">Description</th>
+										<td>
+											The trigger "Save template to library" is hard to learn. Users want to
+											transfer, but the action is "Save to library". Too many steps.
+										</td>
+										<td></td>
+										<td>
+											The trigger is quite hidden. It is icon-only and requires hover. Only one
+											template can be exported at a time. The label is relatively clear: "Export
+											current layout to file".
+										</td>
+										<td></td>
+										<td>
+											The trigger is under "more actions" in the top bar → slightly hard to find.
+											The term "Export" is hard to understand and does not relate well to
+											"Transfer, share".
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">Assessment</th>
+										<td>Hard to find</td>
+										<td></td>
+										<td>Easy to find</td>
+										<td></td>
+										<td>Hard to find</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<!-- 3️⃣ Conclusion -->
+				<div class="detail-step">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">3</span>
+						<h2 class="detail-step-title">Conclusion</h2>
+					</div>
+					<div class="detail-step-body">
+						<p class="body-label">Context 1: Users want to transfer a template from the dashboard</p>
+						<ul class="body-list">
+							<li>Pagefly's Export trigger is easy to find because it sits next to the main dashboard action.</li>
+							<li>Users are unlikely to find Export if it requires an uncommon action like "selecting a template first".</li>
+							<li>The term "Export" does not match user expectations.</li>
+							<li>Based on issue analysis, at least 25/43 cases show users searching for the terms "Export" and "Transfer".</li>
+						</ul>
+
+						<p class="body-label">Context 2: After editing a template in the editor, users want to transfer it immediately</p>
+						<ul class="body-list">
+							<li>
+								When users want to transfer a template to another store, they tend to look in
+								the three-dot menu (a habit carried over from GemPages v6).
+							</li>
+							<li>Wording is critical for users to find the feature.</li>
+						</ul>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={ieThreedotImage}
+								alt="Users looking for the transfer action inside the editor's three-dot menu, a habit from GemPages v6"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<!-- 4️⃣ Solution -->
+				<div class="detail-step detail-step--last">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">4</span>
+						<h2 class="detail-step-title">Solution</h2>
+					</div>
+					<div class="detail-step-body">
+						<p class="body-label">Context 1: Users want to transfer a template from the dashboard</p>
+						<p>Rename the term "Export" → "Export to transfer".</p>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={ieRenameImage}
+								alt="Renaming the Export label to Export to transfer so it matches users' keywords"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+						</div>
+						<p>Add the "Export to transfer" trigger next to the main action.</p>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={ieTriggerImage}
+								alt="Placing the Export to transfer trigger next to the main dashboard action"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+						</div>
+
+						<p class="body-label">
+							Context 2: After editing a template in the editor, users want to transfer it immediately
+						</p>
+						<p>Add an Export action in the top bar menu.</p>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={ieTopbarImage}
+								alt="Adding an Export action to the editor's top bar menu"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+						</div>
+						<p>The first time users click Save, show a tip box that guides them to Export.</p>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={ieTipImage}
+								alt="A tip box shown after the first Save that guides users to the Export action"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+						</div>
+					</div>
+				</div>
+
+			</section>
+
+		</main>
+	</div>
+</Layout>
+
+<style>
+	.case-page {
+		position: relative;
+		width: min(calc(100% - 3rem), 78rem);
+		margin: 0 auto;
+		padding: 1.25rem 0 5rem;
+	}
+
+	/* ── Shared type tokens ── */
+	.eyebrow,
+	.meta-label,
+	.chapter-kicker {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		line-height: 1.4;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		margin: 0;
+	}
+
+	/* ── Hero ── */
+	.case-hero {
+		padding: 6rem 0 4rem;
+	}
+
+	.eyebrow {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+		margin-bottom: 1.1rem;
+	}
+
+	.eyebrow a {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.1rem 0;
+		color: var(--foreground);
+		text-decoration: none;
+		transition: opacity 120ms ease;
+		font-weight: 600;
+	}
+
+	.eyebrow a:hover,
+	.eyebrow a:focus-visible {
+		opacity: 0.68;
+	}
+
+	.breadcrumb-separator {
+		color: var(--muted-foreground);
+	}
+
+	h1,
+	h2 {
+		margin: 0;
+		color: var(--foreground);
+	}
+
+	.hero-subgrid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+		gap: 2rem;
+		margin-top: 1.75rem;
+	}
+
+	.hero-text {
+		font-size: 1.08rem;
+		line-height: 1.7;
+		margin: 0;
+	}
+
+	/* ── Meta strip ── */
+	.meta-strip {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 2rem;
+		padding: 1.5rem 0 0.5rem;
+		border-top: 1px solid var(--border);
+	}
+
+	.meta-item {
+		padding-top: 0.75rem;
+	}
+
+	.meta-label {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		margin: 0;
+	}
+
+	.meta-value {
+		margin: 0.35rem 0 0;
+		font-size: 1.15rem;
+		font-weight: 700;
+	}
+
+	/* ── Chapter sections (Overview / Details) ── */
+	.chapter-section {
+		padding: 3.5rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.chapter-kicker {
+		display: block;
+		margin-bottom: 2rem;
+	}
+
+	/* ── Chapter subsections (numbered headings) ── */
+	.chapter-subsection {
+		display: grid;
+		grid-template-columns: 16rem minmax(0, 1fr);
+		gap: 2rem;
+		padding: 2rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.chapter-subsection:first-of-type {
+		border-top: 0;
+		padding-top: 0;
+	}
+
+	.chapter-subheading {
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		padding-top: 0.1rem;
+	}
+
+	.chapter-body {
+		display: grid;
+		gap: 1rem;
+		max-width: 52rem;
+	}
+
+	.chapter-body p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	/* ── Images ── */
+	.image-block {
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	.case-image {
+		width: 100%;
+		border: 1px solid var(--border);
+		border-radius: 1.25rem;
+		box-shadow: var(--shadow-large);
+	}
+
+	.image-caption {
+		font-size: 0.9rem !important;
+		color: var(--muted-foreground);
+		line-height: 1.5 !important;
+	}
+
+	/* ── Callout ── */
+	.callout {
+		display: flex;
+		gap: 0.85rem;
+		padding: 1rem 1.25rem;
+		background: var(--muted);
+		border-radius: 0.75rem;
+		border: 1px solid var(--border);
+	}
+
+	.callout-icon {
+		font-size: 1.1rem;
+		line-height: 1.7;
+		flex-shrink: 0;
+	}
+
+	.callout p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	/* ── Body lists ── */
+	.body-label {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+		font-weight: 700;
+	}
+
+	.body-list {
+		margin: 0;
+		padding-left: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.body-list--ordered {
+		padding-left: 1.25rem;
+		list-style: decimal;
+	}
+
+	.body-list li {
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	.body-list--nested {
+		margin-top: 0;
+		padding-left: 1.25rem;
+		list-style: disc;
+	}
+
+	/* ── Comparison tables ── */
+	.table-scroll {
+		overflow-x: auto;
+		border: 1px solid var(--border);
+		border-radius: 0.75rem;
+	}
+
+	.compare-table {
+		width: 100%;
+		min-width: 46rem;
+		border-collapse: collapse;
+		font-size: 0.92rem;
+		line-height: 1.55;
+	}
+
+	.compare-table th,
+	.compare-table td {
+		padding: 0.75rem 0.9rem;
+		text-align: left;
+		vertical-align: top;
+		border-bottom: 1px solid var(--border);
+		border-right: 1px solid var(--border);
+	}
+
+	.compare-table th:last-child,
+	.compare-table td:last-child {
+		border-right: 0;
+	}
+
+	.compare-table tbody tr:last-child th,
+	.compare-table tbody tr:last-child td {
+		border-bottom: 0;
+	}
+
+	.compare-table thead th {
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		background: var(--muted);
+		white-space: nowrap;
+	}
+
+	.compare-table tbody th[scope='row'] {
+		font-weight: 700;
+		white-space: nowrap;
+		background: var(--muted);
+	}
+
+	/* ── Process grid ── */
+	.process-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.process-card {
+		padding: 1.5rem;
+		background: var(--muted);
+		border: 1px solid var(--border);
+		border-radius: 1rem;
+		display: grid;
+		gap: 0.5rem;
+		align-content: start;
+	}
+
+	.process-card-number {
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+	}
+
+	.process-card-title {
+		margin: 0;
+		font-size: 0.98rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1.35;
+	}
+
+	.process-card-desc {
+		margin: 0;
+		font-size: 0.92rem;
+		line-height: 1.65;
+		color: var(--muted-foreground);
+	}
+
+	/* ── Detail steps ── */
+	.detail-step {
+		display: grid;
+		grid-template-columns: 16rem minmax(0, 1fr);
+		gap: 2rem;
+		padding: 2.5rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.detail-step--last {
+		border-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.detail-step-rail {
+		align-self: start;
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	.detail-step-num {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.75rem;
+		height: 1.75rem;
+		background: var(--foreground);
+		color: var(--background);
+		border-radius: 50%;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 700;
+		flex-shrink: 0;
+	}
+
+	.detail-step-title {
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1.4;
+	}
+
+	.detail-step-body {
+		display: grid;
+		gap: 1rem;
+		max-width: 52rem;
+	}
+
+	.detail-step-body p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 980px) {
+		.hero-subgrid,
+		.meta-strip {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.case-page {
+			width: min(calc(100% - 1.5rem), 78rem);
+			padding-top: 1rem;
+		}
+
+		.case-hero {
+			padding: 4rem 0 3rem;
+		}
+
+		.chapter-subsection,
+		.detail-step {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.process-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.hero-text,
+		.chapter-body p,
+		.detail-step-body p,
+		.body-list li,
+		.callout p {
+			font-size: 1.05rem;
+		}
+	}
+</style>

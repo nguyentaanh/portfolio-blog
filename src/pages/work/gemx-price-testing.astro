@@ -1,0 +1,1140 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import { siteConfig } from '../../config/site';
+import chatClassificationImage from '../../assets/images/anh-bang-phan-loai-chat.jpg';
+import firstDraftGuideImage from '../../assets/images/anh-1-ver-2.png';
+import firstDraftVariantImage from '../../assets/images/anh-2-ver-2.png';
+import finalDesignImage from '../../assets/images/anh-3-ver-2.png';
+
+const highlights = [
+	{ label: 'Sản phẩm', value: 'GemX — Shopify A/B testing app' },
+	{ label: 'Vai trò', value: 'Product Designer' },
+	{ label: 'Thời gian', value: '2026' },
+];
+
+const behaviourRows = [
+	{ behaviour: 'Tạo test', payer: '80%', nonPayer: '62%', ratio: '1.3×' },
+	{ behaviour: 'Chạy test', payer: '55%', nonPayer: '21%', ratio: '2.6×' },
+	{ behaviour: 'Xem kết quả test', payer: '53%', nonPayer: '15%', ratio: '3.5×' },
+];
+
+const funnelTotal = 869;
+const funnelRows = [
+	{ step: 'Install', stores: 869, purchase: '15.2%', drop: null, alert: false },
+	{ step: 'Created test', stores: 574, purchase: '20.4%', drop: '34%', alert: false },
+	{ step: 'Started test', stores: 256, purchase: '39.5%', drop: '55%', alert: true },
+	{ step: 'Saw result (Exp)', stores: 207, purchase: '47.8%', drop: '19%', alert: false },
+];
+
+const blockerRows = [
+	{
+		issue: 'Thiếu loại test họ cần (giá, ảnh sản phẩm, cart, bundle, instant landing page…)',
+		count: '24',
+	},
+	{ issue: 'Muốn test nhiều hơn 2 bản', count: '8' },
+	{ issue: 'Không hiểu cơ chế link A/B (dùng URL nào để chạy)', count: '6' },
+	{ issue: 'Không tìm thấy template GemPages', count: '4' },
+	{ issue: 'Chưa bật Theme helper', count: '3' },
+];
+
+const testTypeRows = [
+	{ type: 'Test giá', count: '7' },
+	{ type: 'Instant Landing Page', count: '6' },
+	{ type: 'Test 2 trang / 2 sản phẩm khác nhau', count: '4' },
+	{ type: 'Test ảnh sản phẩm', count: '4' },
+];
+
+const caseStudyUrl = new URL('/work/gemx-price-testing', siteConfig.siteUrl).toString();
+const caseStudySchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: siteConfig.siteUrl,
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Work',
+				item: new URL('/work', siteConfig.siteUrl).toString(),
+			},
+			{
+				'@type': 'ListItem',
+				position: 3,
+				name: 'GemX Price Testing Case Study',
+				item: caseStudyUrl,
+			},
+		],
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'CreativeWork',
+		name: 'GemX Price Testing Case Study',
+		headline: 'Làm sao để tăng Conversion của GemX?',
+		description:
+			'Một cuộc điều tra dữ liệu để tìm ra đòn bẩy conversion của GemX — và thiết kế giải pháp.',
+		url: caseStudyUrl,
+		author: {
+			'@type': 'Person',
+			name: siteConfig.authorName,
+		},
+		isPartOf: {
+			'@type': 'WebSite',
+			name: siteConfig.name,
+			url: siteConfig.siteUrl,
+		},
+		inLanguage: 'vi',
+	},
+];
+---
+
+<Layout
+	title="Làm sao để tăng Conversion của GemX? | Taanh, Product Designer"
+	description="Một cuộc điều tra dữ liệu để tìm ra đòn bẩy conversion của GemX — và thiết kế giải pháp."
+	ogType="article"
+	ogImageAlt="Màn Product price experiment của GemX với hai cột Control và Variant"
+	schema={caseStudySchema}
+>
+	<a class="skip-link" href="#main-content">Skip to content</a>
+
+	<div class="case-page" lang="vi">
+		<SiteHeader />
+
+		<main id="main-content">
+
+			<!-- Hero -->
+			<section class="case-hero">
+				<p class="eyebrow">
+					<a class="breadcrumb-link" href="/work">Case Study</a>
+					<span class="breadcrumb-separator" aria-hidden="true">/</span>
+					<span>GemX · Price testing</span>
+				</p>
+				<h1 class="display-title">Làm sao để tăng Conversion của GemX?</h1>
+				<div class="hero-subgrid">
+					<p class="hero-text">
+						Một cuộc điều tra dữ liệu để tìm ra đòn bẩy conversion của GemX — và
+						thiết kế giải pháp.
+					</p>
+				</div>
+			</section>
+
+			<!-- Meta strip -->
+			<section class="meta-strip" id="overview">
+				{highlights.map((item) => (
+					<div class="meta-item">
+						<p class="meta-label">{item.label}</p>
+						<p class="meta-value">{item.value}</p>
+					</div>
+				))}
+			</section>
+
+			<!-- ── TÓM TẮT ── -->
+			<section class="chapter-section">
+				<p class="chapter-kicker">Tóm tắt</p>
+
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">Nếu bạn chỉ có 30s đọc</h2>
+					<div class="chapter-body">
+						<p class="summary-text">
+							Conversion(Tỉ lệ user convert từ new install thành paid user) của GemX đi xuống. Tôi trả lời từng câu hỏi một — mỗi câu trả lời lại gợi ra câu hỏi kế tiếp — cho tới khi lần ra đúng thứ tác động vào conversion, rồi dùng research này thuyết phục mọi người tập trung làm Price testing.
+						</p>
+					</div>
+				</div>
+
+			</section>
+
+			<!-- ── CHI TIẾT ── -->
+			<section class="chapter-section" id="context">
+				<p class="chapter-kicker">Chi tiết</p>
+
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">Context</h2>
+					<div class="chapter-body">
+						<p>
+							GemX là app A/B testing cho các store bán hàng trên Shopify. Conversion là
+							tỉ lệ chuyển đổi một user Install thành user mua plan của GemX.
+						</p>
+						<p>
+							Team được giao KPI là MRR mục tiêu vào cuối tháng 12 năm 2026. Để đạt được mục tiêu này, một trong những chỉ số quan trọng nhất là Conversion. 
+						</p>
+					</div>
+				</div>
+
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">Trả lời tuần tự các câu hỏi</h2>
+					<div class="chapter-body">
+						<p>
+							Cách tư duy ở đây là: breakdown một câu hỏi rộng và phức tạp thành những
+							câu hỏi hẹp, đơn giản hơn và có thể trả lời được bằng dữ liệu.
+						</p>
+						<p>
+							Từ câu hỏi tiêu đề "Làm sao để tăng Conversion?", tôi bắt đầu đào sâu theo
+							từng câu hỏi sau:
+						</p>
+					</div>
+				</div>
+
+				<!-- 1️⃣ -->
+				<div class="detail-step">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">1</span>
+						<h2 class="detail-step-title">Người trả tiền khác người không trả tiền ở chỗ nào?</h2>
+					</div>
+					<div class="detail-step-body">
+						<p>
+							Cùng install GemX, nhưng có người quyết định trả tiền, có người không. Vậy
+							sự khác nhau nằm trong funnel từ lúc Install đến khi bấm mua: người trả
+							tiền đã nhìn/cảm thấy gì và người không trả tiền nhìn/cảm thấy gì?
+						</p>
+						<p>
+							Tôi kéo ra những màn hình và hành động mà người mua đi qua trước khi bấm
+							trả tiền, rồi đặt cạnh những gì người không mua làm trong 30 ngày sau
+							install.
+						</p>
+						<p>
+							Cái thấy ngay là người trả tiền chăm hơn hẳn: họ vào app trung bình 5.2
+							ngày, người không trả tiền chỉ 1.6. Nhưng "chăm hơn" thì cũng chưa cho tôi
+							biết phải làm gì, nên tôi bóc từng hành động ra, tính xem người trả tiền
+							hành động khác người không trả như nào.
+						</p>
+
+						<div class="table-block">
+							<table class="data-table">
+								<thead>
+									<tr>
+										<th scope="col">Hành vi</th>
+										<th scope="col" class="num">Người trả tiền</th>
+										<th scope="col" class="num">Người không trả tiền</th>
+										<th scope="col" class="num">Gấp</th>
+									</tr>
+								</thead>
+								<tbody>
+									{behaviourRows.map((row) => (
+										<tr>
+											<th scope="row">{row.behaviour}</th>
+											<td class="num">{row.payer}</td>
+											<td class="num">{row.nonPayer}</td>
+											<td class="num">{row.ratio}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+
+						<p>
+							Thứ thật sự tách hai nhóm ra là việc đi tiếp và nhìn thấy kết quả. Xem
+							report, chạy test, mở màn report. Người trả tiền là những người
+							đi được tới khoảnh khắc con số hiện ra, tin nó, rồi mới trả tiền.
+						</p>
+
+						<div class="insight-block">
+							<p class="insight-line">
+								→ Vậy câu hỏi tiếp theo là: làm sao đưa những người đã tạo test đi tới
+								được khoảnh khắc "Xem kết quả test".
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- 2️⃣ -->
+				<div class="detail-step">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">2</span>
+						<h2 class="detail-step-title">Họ rơi rụng ở step nào?</h2>
+					</div>
+					<div class="detail-step-body">
+						<p>
+							Nếu "thấy kết quả" là đích thì phải biết người ta rớt ở step nào trên
+							đường tới đó. Đường đi có bốn step. Tôi dựng phễu trên nhóm 869 store cài
+							GemX từ đầu tháng 1 tới giữa tháng 6 năm 2026.
+						</p>
+
+						<figure class="funnel-figure">
+							<figcaption class="funnel-head">
+								<p class="funnel-title">Phễu Install → Saw result</p>
+								<p class="funnel-sub">
+									Cohort cài GemX 1/1–15/6/2026 · số store · % mua gói trong 30 ngày
+								</p>
+							</figcaption>
+
+							<div class="funnel-chart">
+								{funnelRows.map((row) => (
+									<Fragment>
+										{row.drop && (
+											<p class={`funnel-step ${row.alert ? 'funnel-step--alert' : ''}`}>
+												drop {row.drop} từ bước trên{row.alert ? ' · rơi mạnh nhất' : ''}
+											</p>
+										)}
+										<div class="funnel-row">
+											<p class="funnel-label">{row.step}</p>
+											<div class="funnel-track">
+												<div
+													class="funnel-bar"
+													style={`width: ${((row.stores / funnelTotal) * 100).toFixed(1)}%`}
+												>
+													<span class="funnel-count">{row.stores}</span>
+												</div>
+											</div>
+											<p class="funnel-rate">
+												<span class="funnel-rate-value">{row.purchase}</span>
+												<span class="funnel-rate-label">mua trong 30d</span>
+											</p>
+										</div>
+									</Fragment>
+								))}
+							</div>
+						</figure>
+
+						<p>
+							Quan sát phễu: từ tạo test sang chạy test có tỉ lệ drop cao
+							nhất — 55%. Nhưng những ai pass được step này thì tỉ lệ mua nhảy từ 20%
+							lên gần 40%.
+						</p>
+
+						<div class="insight-block">
+							<p class="insight-line">→ Tới đây thì rõ tôi phải đào vào đâu: tăng tỉ lệ chạy test.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- 3️⃣ -->
+				<div class="detail-step">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">3</span>
+						<h2 class="detail-step-title">Vì sao tạo được test mà không chạy được?</h2>
+					</div>
+					<div class="detail-step-body">
+						<p>
+							Câu hỏi "Why" cần dữ liệu định tính. Nguồn dữ liệu định tính ở đây là danh
+							sách convo support Intercom và record Fullstory.
+						</p>
+
+						<p class="body-label">Tôi lọc convo theo đúng nhóm đang kẹt:</p>
+						<ul class="body-list">
+							<li>Những người mà tại lúc nhắn support vẫn còn là free user.</li>
+							<li>Chưa từng chạy test lần nào tại thời điểm nhắn.</li>
+							<li>Và màn phát sinh convo là màn edit experiment.</li>
+						</ul>
+
+						<p>
+							Kết quả 69 convo. Tôi đọc từng convo, mở lại Fullstory xem họ vướng ở đâu.
+							Phần này tôi không dám giao hẳn cho AI tự phân loại — bảo nó gom nhóm
+							trước, rồi tôi soi lại từng tin một. Rồi xếp theo tần suất:
+						</p>
+
+						<div class="table-block">
+							<table class="data-table">
+								<thead>
+									<tr>
+										<th scope="col">Vấn đề khi định chạy test</th>
+										<th scope="col" class="num">Số convo</th>
+									</tr>
+								</thead>
+								<tbody>
+									{blockerRows.map((row) => (
+										<tr>
+											<th scope="row">{row.issue}</th>
+											<td class="num">{row.count}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+
+						<p>
+							Vấn đề rõ ràng: thiếu feature — người ta muốn test một thứ mà GemX chưa làm
+							được. Nhưng "thiếu loại test" vẫn chưa đủ actionable, tôi tiếp tục đào.
+						</p>
+					</div>
+				</div>
+
+				<!-- 4️⃣ -->
+				<div class="detail-step detail-step--last">
+					<div class="detail-step-rail">
+						<span class="detail-step-num">4</span>
+						<h2 class="detail-step-title">Thiếu loại test nào?</h2>
+					</div>
+					<div class="detail-step-body">
+						<p>Đào thêm một tầng vào nhóm "thiếu loại test" xem cụ thể họ cần gì.</p>
+
+						<div class="table-block">
+							<table class="data-table">
+								<thead>
+									<tr>
+										<th scope="col">Loại test merchant muốn</th>
+										<th scope="col" class="num">Số convo</th>
+									</tr>
+								</thead>
+								<tbody>
+									{testTypeRows.map((row) => (
+										<tr class={row.type === 'Test giá' ? 'row-highlight' : ''}>
+											<th scope="row">{row.type}</th>
+											<td class="num">{row.count}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+
+						<p>Price testing (test giá sản phẩm) đứng đầu. Quote:</p>
+
+						<blockquote class="quote-block">
+							<p>"i wann test the price only"</p>
+							<p>"can we split test the price?"</p>
+						</blockquote>
+
+						<div class="callout">
+							<span class="callout-icon" aria-hidden="true">💡</span>
+							<p>
+								Chỗ nghẽn là cửa chạy test, lý
+								do lớn nhất là thiếu loại test, và loại được hỏi nhiều nhất là test price sản phẩm.
+							</p>
+						</div>
+
+						<div class="image-block image-block--portrait">
+							<Image
+								class="case-image"
+								src={chatClassificationImage}
+								alt="Bảng Google Sheets lọc convo Intercom: bốn điều kiện lọc ghi ở hàng đầu, bên dưới là các dòng có start_status là never_started, cột started_at_contact và paid_at_contact đều 'no'"
+								loading="lazy"
+								decoding="async"
+								widths={[480, 720, 960]}
+								sizes="(max-width: 32rem) 100vw, 30rem"
+							/>
+							<p class="image-caption">
+								Bảng lọc convo: chỉ giữ những cuộc thỏa cả bốn điều kiện — chưa từng chạy
+								test, còn ở gói Free, đang ở màn edit experiment, từ 2024 tới nay.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── THIẾT KẾ ── -->
+			<section class="chapter-section" id="design">
+				<p class="chapter-kicker">Thiết kế Price testing</p>
+
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">Bản đầu và hai lỗi</h2>
+					<div class="chapter-body">
+						<p>
+							Bản đầu tôi vẽ chạy đúng về mặt logic nhưng hổng về mặt trải nghiệm. Khi
+							self-review, tôi nhìn ra hai lỗi.
+						</p>
+						<p>
+							Lỗi thứ nhất là khối Setup guide to đùng chiếm hết màn, đẩy cái việc thật
+							sự cần làm là chọn sản phẩm xuống tít dưới. Mở lên cứ như đang đọc tài
+							liệu hướng dẫn chứ không phải đang dựng một cái test.
+						</p>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={firstDraftGuideImage}
+								alt="Bản thiết kế đầu của màn Price experiment: khối Setup guide chiếm gần hết màn, phần Product to test bị đẩy xuống dưới"
+								loading="lazy"
+								decoding="async"
+								widths={[640, 960, 1280]}
+								sizes="(max-width: 56rem) 100vw, 52rem"
+							/>
+							<p class="image-caption">Bản đầu — Setup guide chiếm hết màn.</p>
+						</div>
+
+						<p>
+							Lỗi thứ hai là khu Control/Variant nhồi vào một chỗ quá nhiều thứ: chọn sản
+							phẩm, nhân bản, đổi giá, giữ bản copy unlisted.
+						</p>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={firstDraftVariantImage}
+								alt="Bản thiết kế đầu: khu Variant chứa cùng lúc nút Choose product, Duplicate product & change price và banner giữ bản copy unlisted"
+								loading="lazy"
+								decoding="async"
+								widths={[640, 960, 1280]}
+								sizes="(max-width: 56rem) 100vw, 52rem"
+							/>
+							<p class="image-caption">Bản đầu — khu variant quá tải.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">Bản cuối</h2>
+					<div class="chapter-body">
+						<p>
+							Tôi tách setup thành hai cột A/B rạch ròi. Cột A là sản phẩm đang bán, giá
+							hiện tại của nó thành mốc so sánh. Cột B là bản nhân bản unlisted để gắn
+							giá test. Chia đôi như vậy nói cho merchant biết ngay từ giây đầu rằng đây
+							là việc hai bước, thay vì để họ phải tự luận ra.
+						</p>
+						<p>
+							Tôi đổi chỉ số thắng mặc định từ conversion rate sang revenue. Đây là
+							quyết định sản phẩm chứ không phải quyết định giao diện: với bài toán giá,
+							hạ giá xuống có thể làm conversion tăng nhưng doanh thu lại giảm, nên thứ
+							đáng đem ra phân thắng bại phải là doanh thu.
+						</p>
+						<p>
+							Khối hướng dẫn được rút gọn và đẩy xuống dưới, đóng vai trò làm nền chứ
+							không lấn. Tôi thêm vài tooltip giải nghĩa Control với Variant ngay tại
+							chỗ, và cho hai đường tạo bản Variant: để GemX tự nhân bản, hoặc chọn một
+							sản phẩm có sẵn.
+						</p>
+						<p>
+							Rồi nâng test giá lên thành một loại test riêng ngay ở màn tạo experiment,
+							mô tả gọn trong một câu: thử hai mức giá cùng lúc, sản phẩm thật và một bản
+							nhân bản unlisted, để tìm mức giá cao nhất mà khách còn chịu mua.
+						</p>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={finalDesignImage}
+								alt="Bản thiết kế cuối của màn Product price experiment: hai cột Control và Variant tách rõ, winning metric là Revenue, khối hướng dẫn rút gọn nằm dưới"
+								loading="lazy"
+								decoding="async"
+								widths={[640, 960, 1280]}
+								sizes="(max-width: 56rem) 100vw, 52rem"
+							/>
+							<p class="image-caption">
+								Bản cuối — hai cột Control/Variant, chỉ số Revenue, hướng dẫn gọn ở dưới.
+							</p>
+						</div>
+
+						<p>
+							Cái tôi tâm đắc ở bản cuối không phải nó nhìn xịn hơn, mà là nó lấy đúng nỗi
+							bối rối phần research đã chỉ ra — "tôi không hiểu cái này chạy kiểu gì" —
+							rồi biến cơ chế thành thứ mà nhìn bố cục là tự hiểu.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── KẾT QUẢ ── -->
+			<section class="chapter-section" id="outcome">
+				<p class="chapter-kicker">Kết quả</p>
+
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">Và lessions learned</h2>
+					<div class="chapter-body">
+						<p>
+							Tính tới lúc tôi viết bài này: việc research đã biến một câu hỏi chung chung
+							thành một quyết định có cam kết nguồn lực. Tôi thuyết phục được stakeholder
+							chọn Price testing giữa cả đống lựa chọn cạnh tranh. Bản design dự kiến lên
+							production trong khoảng một tuần nữa.
+						</p>
+
+						<p class="body-label">Vài thứ tôi mang theo sau dự án này:</p>
+						<ul class="body-list">
+							<li>
+								Toàn bộ quá trình làm product là trả lời một chuỗi tuần tự các câu hỏi từ
+								phức tạp &amp; rộng đến đơn giản &amp; hẹp. AI ra đời giúp Product Design
+								mở rộng scope công việc và hiểu sâu hơn các quyết định sản phẩm.
+							</li>
+							<li>
+								Quá trình tối ưu Conversion thường phải dựa trên lý thuyết về Funnel: hành
+								trình của user gồm những bước nào? Họ gặp vấn đề ở bước nào và tại sao? Lý
+								thuyết này có thể áp dụng ở bất cứ sản phẩm hoặc lĩnh vực nào.
+							</li>
+						</ul>
+
+						<p class="source-note">
+							Nguồn số liệu: phần phễu và hành vi tính từ Redshift, trên nhóm store cài
+							GemX từ 1/1 đến 15/6/2026 (869 store, 132 người mua và 737 người không
+							mua), theo dõi trong 30 ngày sau khi cài. Phần định tính lấy từ việc đọc và
+							phân loại 69 cuộc chat Intercom của những người kẹt tại bước chạy test.
+						</p>
+					</div>
+				</div>
+			</section>
+
+		</main>
+	</div>
+</Layout>
+
+<style>
+	.case-page {
+		position: relative;
+		width: min(calc(100% - 3rem), 78rem);
+		margin: 0 auto;
+		padding: 1.25rem 0 5rem;
+	}
+
+	/* ── Shared type tokens ── */
+	.eyebrow,
+	.meta-label,
+	.chapter-kicker {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		line-height: 1.4;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		margin: 0;
+	}
+
+	/* ── Hero ── */
+	.case-hero {
+		padding: 6rem 0 4rem;
+	}
+
+	.eyebrow {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+		margin-bottom: 1.1rem;
+	}
+
+	.eyebrow a {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.1rem 0;
+		color: var(--foreground);
+		text-decoration: none;
+		transition: opacity 120ms ease;
+		font-weight: 600;
+	}
+
+	.eyebrow a:hover,
+	.eyebrow a:focus-visible {
+		opacity: 0.68;
+	}
+
+	.breadcrumb-separator {
+		color: var(--muted-foreground);
+	}
+
+	h1,
+	h2 {
+		margin: 0;
+		color: var(--foreground);
+	}
+
+	.hero-subgrid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+		gap: 2rem;
+		margin-top: 1.75rem;
+	}
+
+	.hero-text {
+		font-size: 1.08rem;
+		line-height: 1.7;
+		margin: 0;
+	}
+
+	/* ── Meta strip ── */
+	.meta-strip {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 2rem;
+		padding: 1.5rem 0 0.5rem;
+		border-top: 1px solid var(--border);
+	}
+
+	.meta-item {
+		padding-top: 0.75rem;
+	}
+
+	.meta-label {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		margin: 0;
+	}
+
+	.meta-value {
+		margin: 0.35rem 0 0;
+		font-size: 1.15rem;
+		font-weight: 700;
+	}
+
+	/* ── Chapter sections ── */
+	.chapter-section {
+		padding: 3.5rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.chapter-kicker {
+		display: block;
+		margin-bottom: 2rem;
+	}
+
+	.chapter-subsection {
+		display: grid;
+		grid-template-columns: 16rem minmax(0, 1fr);
+		gap: 2rem;
+		padding: 2rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.chapter-subsection:first-of-type {
+		border-top: 0;
+		padding-top: 0;
+	}
+
+	.chapter-subheading {
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		padding-top: 0.1rem;
+	}
+
+	.chapter-body {
+		display: grid;
+		gap: 1rem;
+		max-width: 52rem;
+	}
+
+	.chapter-body p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	.summary-text {
+		font-size: 1.2rem !important;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+	}
+
+	/* ── Images ── */
+	.image-block {
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	/* Tall portrait shots would otherwise fill the whole viewport at column width */
+	.image-block--portrait {
+		max-width: 30rem;
+	}
+
+	.case-image {
+		width: 100%;
+		height: auto;
+		border: 1px solid var(--border);
+		border-radius: 1.25rem;
+		box-shadow: var(--shadow-large);
+	}
+
+	.image-caption {
+		font-size: 0.9rem !important;
+		color: var(--muted-foreground);
+		line-height: 1.5 !important;
+	}
+
+	/* ── Tables ── */
+	.table-block {
+		overflow-x: auto;
+		border: 1px solid var(--border);
+		border-radius: 0.75rem;
+	}
+
+	.data-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 1rem;
+		line-height: 1.55;
+		text-align: left;
+	}
+
+	.data-table th,
+	.data-table td {
+		padding: 0.7rem 1rem;
+		border-bottom: 1px solid var(--border);
+		font-weight: 400;
+		vertical-align: top;
+	}
+
+	.data-table thead th {
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		background: var(--muted);
+		vertical-align: bottom;
+	}
+
+	.data-table tbody th {
+		font-weight: 600;
+		min-width: 12rem;
+	}
+
+	.data-table tbody tr:last-child th,
+	.data-table tbody tr:last-child td {
+		border-bottom: 0;
+	}
+
+	.data-table .num {
+		text-align: right;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.data-table tbody .num {
+		white-space: nowrap;
+	}
+
+	.data-table .row-highlight th,
+	.data-table .row-highlight td {
+		background: var(--muted);
+		font-weight: 700;
+	}
+
+	/* ── Funnel chart ── */
+	.funnel-figure {
+		/* Bar fill + status inks. Validated for WCAG contrast against each surface. */
+		--funnel-bar: #5869d8;
+		--funnel-bar-ink: #ffffff;
+		--funnel-alert: #b5451f;
+		--funnel-good: #116b44;
+
+		margin: 0;
+		padding: 1.5rem 1.5rem 1.75rem;
+		border: 1px solid var(--border);
+		border-radius: 1rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	:root[data-theme='dark'] .funnel-figure {
+		--funnel-bar: #6f95f5;
+		--funnel-bar-ink: #0d1014;
+		--funnel-alert: #ef8354;
+		--funnel-good: #5ad39a;
+	}
+
+	.funnel-head {
+		display: grid;
+		gap: 0.3rem;
+	}
+
+	.funnel-title {
+		margin: 0;
+		font-size: 1.05rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+
+	.funnel-sub {
+		margin: 0;
+		font-size: 0.85rem !important;
+		line-height: 1.5 !important;
+		color: var(--muted-foreground);
+	}
+
+	.funnel-chart {
+		--funnel-label-col: 10rem;
+		--funnel-gap: 1.25rem;
+
+		display: grid;
+		row-gap: 0.45rem;
+	}
+
+	/* Areas, not DOM order, so the mobile layout can put the rate beside the label */
+	.funnel-row {
+		display: grid;
+		grid-template-columns: var(--funnel-label-col) minmax(0, 1fr) 6.5rem;
+		grid-template-areas: "label track rate";
+		column-gap: var(--funnel-gap);
+		align-items: center;
+	}
+
+	.funnel-label {
+		grid-area: label;
+		margin: 0;
+		font-size: 1rem !important;
+		font-weight: 700;
+		line-height: 1.35 !important;
+	}
+
+	.funnel-track {
+		grid-area: track;
+		background: var(--muted);
+		border-radius: 0.25rem;
+		overflow: hidden;
+	}
+
+	.funnel-bar {
+		display: flex;
+		align-items: center;
+		min-width: 3.25rem;
+		height: 2.25rem;
+		padding: 0 0.7rem;
+		background: var(--funnel-bar);
+		/* square at the baseline, rounded at the data end */
+		border-radius: 0 0.25rem 0.25rem 0;
+	}
+
+	.funnel-count {
+		font-size: 0.95rem;
+		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+		color: var(--funnel-bar-ink);
+	}
+
+	.funnel-rate {
+		grid-area: rate;
+		margin: 0;
+		display: grid;
+		gap: 0.05rem;
+		justify-items: end;
+		text-align: right;
+	}
+
+	.funnel-rate-value {
+		font-size: 1.05rem;
+		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+		color: var(--funnel-good);
+	}
+
+	.funnel-rate-label {
+		font-size: 0.78rem;
+		line-height: 1.3;
+		color: var(--muted-foreground);
+	}
+
+	/* Sits between rows, indented to line up under the bars */
+	.funnel-step {
+		padding-left: calc(var(--funnel-label-col) + var(--funnel-gap));
+		margin: 0;
+		font-size: 0.85rem !important;
+		line-height: 1.4 !important;
+		color: var(--muted-foreground);
+	}
+
+	.funnel-step::before {
+		content: "↳ ";
+	}
+
+	.funnel-step--alert {
+		color: var(--funnel-alert);
+		font-weight: 600;
+	}
+
+	/* ── Quote ── */
+	.quote-block {
+		margin: 0;
+		padding: 0.35rem 0 0.35rem 1.25rem;
+		border-left: 2px solid var(--border);
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.quote-block p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+		font-style: italic;
+		color: var(--muted-foreground);
+	}
+
+	/* ── Callout ── */
+	.callout {
+		display: flex;
+		gap: 0.85rem;
+		padding: 1rem 1.25rem;
+		background: var(--muted);
+		border-radius: 0.75rem;
+		border: 1px solid var(--border);
+	}
+
+	.callout-icon {
+		font-size: 1.1rem;
+		line-height: 1.7;
+		flex-shrink: 0;
+	}
+
+	.callout p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	/* ── Insight lines ── */
+	.insight-block {
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	.insight-line {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+		font-weight: 600;
+	}
+
+	/* ── Body lists ── */
+	.body-label {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+		font-weight: 700;
+	}
+
+	.body-list {
+		margin: 0;
+		padding-left: 1.25rem;
+		list-style: disc;
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.body-list li {
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	.source-note {
+		font-size: 0.9rem !important;
+		line-height: 1.6 !important;
+		color: var(--muted-foreground);
+		font-style: italic;
+		padding-top: 0.75rem;
+		border-top: 1px solid var(--border);
+	}
+
+	/* ── Detail steps ── */
+	.detail-step {
+		display: grid;
+		grid-template-columns: 16rem minmax(0, 1fr);
+		gap: 2rem;
+		padding: 2.5rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.detail-step--last {
+		padding-bottom: 0;
+	}
+
+	.detail-step-rail {
+		align-self: start;
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	.detail-step-num {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.75rem;
+		height: 1.75rem;
+		background: var(--foreground);
+		color: var(--background);
+		border-radius: 50%;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 700;
+		flex-shrink: 0;
+	}
+
+	.detail-step-title {
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1.4;
+	}
+
+	.detail-step-body {
+		display: grid;
+		gap: 1rem;
+		max-width: 52rem;
+	}
+
+	.detail-step-body p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 980px) {
+		.hero-subgrid,
+		.meta-strip {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.case-page {
+			width: min(calc(100% - 1.5rem), 78rem);
+			padding-top: 1rem;
+		}
+
+		.case-hero {
+			padding: 4rem 0 3rem;
+		}
+
+		.chapter-subsection,
+		.detail-step {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.hero-text,
+		.chapter-body p,
+		.detail-step-body p,
+		.body-list li,
+		.callout p,
+		.quote-block p,
+		.insight-line {
+			font-size: 1.05rem;
+		}
+
+		.summary-text {
+			font-size: 1.12rem !important;
+		}
+
+		.data-table {
+			font-size: 0.95rem;
+		}
+
+		.data-table tbody th {
+			min-width: 10rem;
+		}
+
+		/* Funnel: label + rate share a row, bar spans full width beneath them */
+		.funnel-figure {
+			padding: 1.25rem 1rem 1.5rem;
+		}
+
+		.funnel-chart {
+			row-gap: 0.65rem;
+		}
+
+		.funnel-row {
+			grid-template-columns: minmax(0, 1fr) auto;
+			grid-template-areas:
+				"label rate"
+				"track track";
+			column-gap: 1rem;
+			row-gap: 0.4rem;
+			align-items: baseline;
+		}
+
+		.funnel-step {
+			padding-left: 0;
+		}
+
+		.funnel-rate {
+			grid-template-columns: auto auto;
+			align-items: baseline;
+			gap: 0.4rem;
+			justify-items: end;
+		}
+	}
+</style>

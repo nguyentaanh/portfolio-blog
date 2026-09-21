@@ -130,10 +130,7 @@ const caseStudySchema = [
 				<h1 class="display-title">Why GemX's activation drops — and what to do about it.</h1>
 				<div class="hero-subgrid">
 					<p class="hero-text">
-						GemX is a CRO & A/B testing app that helps Shopify merchants improve conversion
-						rates by tracking real customer behavior across layout, content, offers, and the
-						sales funnel. After more than a year on the Shopify App Store, only 6.7% of
-						installs convert to paid — and 61% of users quit at a single step: Feature Use.
+						Pushing the new install to new paid user by encourage them adopt the features.
 					</p>
 				</div>
 			</section>
@@ -328,7 +325,7 @@ const caseStudySchema = [
 								widths={[720, 1080, 1440]}
 								sizes="(max-width: 78rem) 100vw, 78rem"
 							/>
-							<p class="image-caption">Tổng hợp issues.</p>
+							<p class="image-caption">Issues listing</p>
 						</div>
 
 						<p class="body-label">Observed patterns:</p>
@@ -385,7 +382,7 @@ const caseStudySchema = [
 										yet: URL testing and Product details testing.
 									</li>
 									<li>
-										A large number of new users do not know what to A/B test.
+										<strong>Lack of test idea:</strong> A large number of new users do not know what to A/B test.
 									</li>
 									<li>
 										<strong>Hypothesis:</strong> Users lose motivation because the setup
@@ -653,7 +650,8 @@ const caseStudySchema = [
 
 	.callout-list {
 		margin: 0;
-		padding-left: 1.25rem;
+		padding-left: 0;
+		list-style: none;
 		display: grid;
 		gap: 0.4rem;
 	}
@@ -661,6 +659,17 @@ const caseStudySchema = [
 	.callout-list li {
 		font-size: 1.08rem;
 		line-height: 1.7;
+	}
+
+	.callout-list li:has(strong) {
+		padding-left: 1.25rem;
+		position: relative;
+	}
+
+	.callout-list li:has(strong)::before {
+		content: "•";
+		position: absolute;
+		left: 0.25rem;
 	}
 
 	/* ── Insight lines ── */
@@ -686,12 +695,14 @@ const caseStudySchema = [
 
 	.body-list {
 		margin: 0;
-		padding-left: 1.25rem;
+		padding-left: 0;
+		list-style: none;
 		display: grid;
 		gap: 0.5rem;
 	}
 
 	.body-list--ordered {
+		padding-left: 1.25rem;
 		list-style: decimal;
 	}
 
@@ -702,6 +713,7 @@ const caseStudySchema = [
 
 	.body-list--nested {
 		margin-top: 0.4rem;
+		padding-left: 1.25rem;
 		list-style: disc;
 	}
 

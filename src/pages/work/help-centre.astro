@@ -1,0 +1,769 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import { siteConfig } from '../../config/site';
+import hcGempagesHeroImage from '../../assets/images/hc-gempages-hero.png';
+import hcUnbounceImage from '../../assets/images/hc-unbounce.png';
+import hcElementorImage from '../../assets/images/hc-elementor.png';
+import hcSwitchImage from '../../assets/images/hc-switch.png';
+import hcEcomsolidColorImage from '../../assets/images/hc-ecomsolid-color.png';
+import hcGempagesColorImage from '../../assets/images/hc-gempages-color.png';
+import hcUiFirstImage from '../../assets/images/hc-ui-first.png';
+import hcHandoffImage from '../../assets/images/hc-handoff.png';
+import hcResultImage from '../../assets/images/hc-result.png';
+
+const highlights = [
+	{ label: 'Product', value: 'EcomSolid & GemPages' },
+	{ label: 'Role', value: 'Product Designer' },
+	{ label: 'Focus', value: 'Competitor Research · UI Design' },
+];
+
+const structure = [
+	{
+		title: 'Home page',
+		description:
+			'The overview that gathers every feature and makes it easy for users to move to the right section.',
+	},
+	{
+		title: 'FAQ',
+		description:
+			'Guides users from basic to advanced through structured question sets that route and answer their doubts, updated regularly.',
+	},
+	{
+		title: 'Feature',
+		description:
+			'Collects and updates app features — how to use them, how to set them up, and the value they bring — while doubling as a deeper marketing space.',
+	},
+	{
+		title: 'Blog',
+		description:
+			'Part of the marketing strategy: a place to connect with customers and gather feedback data.',
+	},
+	{
+		title: 'Release Note',
+		description:
+			'Announces app updates continuously so customers see steady progress and teams like CS stay on top of changes.',
+	},
+	{
+		title: 'Video Tutorial',
+		description: 'A hub that collects and categorises tutorial videos.',
+	},
+	{
+		title: 'Customer',
+		description:
+			'Case studies and reviews of customers who succeeded with GemPages or EcomSolid, building trust as living proof of effectiveness.',
+	},
+	{
+		title: 'Pricing',
+		description:
+			'An indirect up-sell space that spells out benefits and breaks down each plan so customers can decide with confidence.',
+	},
+];
+
+const caseStudyUrl = new URL('/work/help-centre', siteConfig.siteUrl).toString();
+const caseStudySchema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: siteConfig.siteUrl,
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Work',
+				item: new URL('/work', siteConfig.siteUrl).toString(),
+			},
+			{
+				'@type': 'ListItem',
+				position: 3,
+				name: 'Help Centre Case Study',
+				item: caseStudyUrl,
+			},
+		],
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'CreativeWork',
+		name: 'Supporting the customer care team with a Help Centre',
+		headline: 'Designing a Help Centre for EcomSolid and GemPages',
+		description:
+			'A competitor-research and UI design case study on building a shared Help Centre home page for EcomSolid and GemPages to reduce repetitive support load and guide users to answers.',
+		url: caseStudyUrl,
+		author: {
+			'@type': 'Person',
+			name: siteConfig.authorName,
+		},
+		isPartOf: {
+			'@type': 'WebSite',
+			name: siteConfig.name,
+			url: siteConfig.siteUrl,
+		},
+		inLanguage: siteConfig.locale,
+	},
+];
+---
+
+<Layout
+	title="Help Centre Case Study | Taanh, Product Designer"
+	description="Designing a shared Help Centre home page for EcomSolid and GemPages to cut repetitive support load and guide users straight to the answers they need."
+	ogType="article"
+	ogImageAlt="Help Centre home page designed for EcomSolid and GemPages"
+	schema={caseStudySchema}
+>
+	<a class="skip-link" href="#main-content">Skip to content</a>
+
+	<div class="case-page">
+		<SiteHeader />
+
+		<main id="main-content">
+
+			<!-- Hero -->
+			<section class="case-hero">
+				<p class="eyebrow">
+					<a class="breadcrumb-link" href="/work">Case Study</a>
+					<span class="breadcrumb-separator" aria-hidden="true">/</span>
+					<span>Help Centre</span>
+				</p>
+				<h1 class="display-title">Supporting the customer care team with a Help Centre.</h1>
+				<div class="hero-subgrid">
+					<p class="hero-text">
+						EcomSolid and GemPages leaned heavily on a stellar support team — but the same
+						questions kept coming back. We designed a Help Centre home page to save time for
+						both users and the CS team, and to guide people straight to the answers they need.
+					</p>
+				</div>
+			</section>
+
+			<!-- Meta strip -->
+			<section class="meta-strip" id="overview">
+				{highlights.map((item) => (
+					<div class="meta-item">
+						<p class="meta-label">{item.label}</p>
+						<p class="meta-value">{item.value}</p>
+					</div>
+				))}
+			</section>
+
+			<!-- ── BACKGROUND ── -->
+			<section class="chapter-section">
+				<p class="chapter-kicker">Background</p>
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">The context</h2>
+					<div class="chapter-body">
+						<p>
+							EcomSolid and GemPages are two flagship products from Seal Commerce, helping
+							people who cannot code or design build their own Shopify storefronts. One of the
+							biggest reasons both products are highly rated is their user support team (the
+							"CS team").
+						</p>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={hcGempagesHeroImage}
+								alt="GemPages marketing site highlighting the product and its support"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+							<p class="image-caption">Source: gempages.net</p>
+						</div>
+						<p>
+							But over time, the product team noticed the CS team was fielding thousands of
+							user questions a day — many of them repetitive. That drained a lot of time and
+							people without adding much value.
+						</p>
+						<p>
+							So the Product team proposed a Help Centre to save time for both users and the
+							CS team.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── RESEARCH ── -->
+			<section class="chapter-section" id="research">
+				<p class="chapter-kicker">Research</p>
+
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">Why a Help Centre?</h2>
+					<div class="chapter-body">
+						<p>
+							We ran a desk research process — collecting existing data and information,
+							filtering it, and synthesising the insights that answer the questions behind the
+							product. Below are a few of the most telling answers:
+						</p>
+						<ol class="body-list body-list--ordered">
+							<li>
+								Neither ES nor GP users had a single place to search for useful information —
+								from simple questions to advanced ones.
+							</li>
+							<li>
+								Support spent a lot of time walking customers through very simple tasks they
+								could learn themselves, if only there were a place to reach that basic knowledge.
+							</li>
+							<li>
+								There was no space to publish guiding and marketing blog content, or to capture
+								feedback on how useful that information was. Measuring interest and view rates
+								per category would also reveal real data about users.
+							</li>
+							<li>
+								Users did not fully understand how features worked, how many features existed, or
+								whether any were new — how to use them, how to set them up, and the benefits they
+								bring.
+							</li>
+						</ol>
+					</div>
+				</div>
+
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">Help Centre structure</h2>
+					<div class="chapter-body">
+						<p>
+							After analysing Help Centre case studies on the market, the team settled on an
+							overall structure:
+						</p>
+						<ol class="structure-list">
+							{structure.map((item, index) => (
+								<li class="structure-item">
+									<span class="structure-num">{index + 1}</span>
+									<div>
+										<p class="structure-title">{item.title}</p>
+										<p class="structure-desc">{item.description}</p>
+									</div>
+								</li>
+							))}
+						</ol>
+
+						<div class="callout">
+							<span class="callout-icon" aria-hidden="true">📢</span>
+							<p>
+								Within this case study, we focus only on the Home page — the first impression
+								for users, and a key part of guiding them through the large body of Help Centre
+								information.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">Guiding users from the home page</h2>
+					<div class="chapter-body">
+						<p>
+							So how can the Help Centre home page guide users to the right answer for their
+							question? To answer this, we ran a solution audit of highly rated Help Centres on
+							the market, gathered the common components, and analysed why they were used:
+						</p>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={hcUnbounceImage}
+								alt="Unbounce Help Centre home page used as a reference in the solution audit"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+							<p class="image-caption">Unbounce's Help Centre</p>
+						</div>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={hcElementorImage}
+								alt="Elementor Help Centre home page used as a reference in the solution audit"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+							<p class="image-caption">Elementor's Help Centre (at the time of the case study)</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">Help Centre style</h2>
+					<div class="chapter-body">
+						<p>
+							Because EcomSolid and GemPages are positioned as two products that run alongside
+							and complement each other, the product team kept the structure of both Help
+							Centres identical.
+						</p>
+						<p>
+							To help users tell the two products apart, we added a way to switch between the
+							two Help Centres.
+						</p>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={hcSwitchImage}
+								alt="Switcher that lets users move between the EcomSolid and GemPages Help Centres by logo"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+						</div>
+						<p>
+							To move from the EcomSolid Help Centre to GemPages and back, users can click the
+							logo of the product they want to go to. This keeps browsing seamless across both
+							Help Centres, while signalling how closely the two products support each other.
+						</p>
+
+						<p class="body-label">Brand colours</p>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={hcEcomsolidColorImage}
+								alt="EcomSolid brand colour palette applied to buttons, links, and visuals"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+							<p class="image-caption">EcomSolid</p>
+						</div>
+						<p>
+							ES users lean toward simplicity and ease of use, mostly newer and smaller stores.
+							So the design style needed to feel young, friendly, and simple. The main colour is
+							reused from the EcomSolid landing page for a consistent brand identity, applied to
+							buttons, links, and visuals.
+						</p>
+
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={hcGempagesColorImage}
+								alt="GemPages brand colour palette reused from the dashboard"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+							<p class="image-caption">GemPages</p>
+						</div>
+						<p>
+							GP users tend to be more established, with design experience and a business
+							mindset. So the GP style needed to feel solid and effective, and to serve a large,
+							diverse user base. Its main palette is reused from the Dashboard to keep the
+							website's identity consistent.
+						</p>
+
+						<div class="callout">
+							<span class="callout-icon" aria-hidden="true">💡</span>
+							<p>
+								Because this is an information-heavy site, the ability to classify information
+								matters a lot. Search bars in Help Centres like Webflow and Avada return a
+								category alongside each result title — a guide title alone is not enough for users
+								to judge whether it is the result they expect; adding a category makes results far
+								more accurate. Results should also appear dynamically, so users don't have to
+								press Enter to browse them.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── UI DESIGN ── -->
+			<section class="chapter-section" id="ui-design">
+				<p class="chapter-kicker">UI Design</p>
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">From wireframe to UI</h2>
+					<div class="chapter-body">
+						<p>
+							With everything we had gathered, we moved through wireframes and UI design to
+							produce the first UI drafts.
+						</p>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={hcUiFirstImage}
+								alt="First UI drafts of the Help Centre home page"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+						</div>
+						<p>We also wrote hand-off notes — requirements and guidance meant to:</p>
+						<ul class="body-list body-list--nested">
+							<li>Make sure the front-end team understood the design intent.</li>
+							<li>Ensure the product reached users accurately and pixel-perfect.</li>
+							<li>Serve as a shared reference throughout the work.</li>
+						</ul>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={hcHandoffImage}
+								alt="Hand-off notes documenting design intent for the front-end team"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+						</div>
+						<p>
+							We also streamlined the workflow and saved time by making full use of components.
+						</p>
+						<p>And here is the result:</p>
+						<div class="image-block">
+							<Image
+								class="case-image"
+								src={hcResultImage}
+								alt="Final Help Centre home page for EcomSolid, with GemPages following the same structure"
+								loading="lazy"
+								decoding="async"
+								widths={[720, 1080, 1440]}
+								sizes="(max-width: 78rem) 100vw, 78rem"
+							/>
+							<p class="image-caption">
+								Home page of the EcomSolid Help Centre (GemPages shares the same structure)
+							</p>
+						</div>
+						<div class="callout">
+							<span class="callout-icon" aria-hidden="true">👉</span>
+							<p>
+								Live design here:
+								<a class="text-link" href="https://help.ecomsolid.com/" target="_blank" rel="noopener noreferrer">help.ecomsolid.com</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── KEY LEARNING ── -->
+			<section class="chapter-section" id="key-learning">
+				<p class="chapter-kicker">Key Learning</p>
+				<div class="chapter-subsection">
+					<h2 class="chapter-subheading">What we took away</h2>
+					<div class="chapter-body">
+						<p>
+							Along the way we hit some challenges and learned a lot. A few highlights:
+						</p>
+						<p class="body-label">You don't always need a complete UX process.</p>
+						<p>
+							With just desk research and competitor analysis, we still shipped a design that
+							solved real problems for users and the business. In a later phase, we'll set up
+							metrics to measure effectiveness and surface issues still left in that first
+							release.
+						</p>
+						<p class="body-label">Treat the front-end team as a user of your UX work.</p>
+						<p>
+							The FE team's role is beyond debate — so we worked to produce documentation that
+							increased clarity and conveyed the design intent as precisely as possible.
+						</p>
+					</div>
+				</div>
+			</section>
+
+		</main>
+	</div>
+</Layout>
+
+<style>
+	.case-page {
+		position: relative;
+		width: min(calc(100% - 3rem), 78rem);
+		margin: 0 auto;
+		padding: 1.25rem 0 5rem;
+	}
+
+	/* ── Shared type tokens ── */
+	.eyebrow,
+	.meta-label,
+	.chapter-kicker {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		line-height: 1.4;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		margin: 0;
+	}
+
+	/* ── Hero ── */
+	.case-hero {
+		padding: 6rem 0 4rem;
+	}
+
+	.eyebrow {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+		margin-bottom: 1.1rem;
+	}
+
+	.eyebrow a {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.1rem 0;
+		color: var(--foreground);
+		text-decoration: none;
+		transition: opacity 120ms ease;
+		font-weight: 600;
+	}
+
+	.eyebrow a:hover,
+	.eyebrow a:focus-visible {
+		opacity: 0.68;
+	}
+
+	.breadcrumb-separator {
+		color: var(--muted-foreground);
+	}
+
+	h1,
+	h2 {
+		margin: 0;
+		color: var(--foreground);
+	}
+
+	.hero-subgrid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+		gap: 2rem;
+		margin-top: 1.75rem;
+	}
+
+	.hero-text {
+		font-size: 1.08rem;
+		line-height: 1.7;
+		margin: 0;
+	}
+
+	/* ── Meta strip ── */
+	.meta-strip {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 2rem;
+		padding: 1.5rem 0 0.5rem;
+		border-top: 1px solid var(--border);
+	}
+
+	.meta-item {
+		padding-top: 0.75rem;
+	}
+
+	.meta-label {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		margin: 0;
+	}
+
+	.meta-value {
+		margin: 0.35rem 0 0;
+		font-size: 1.15rem;
+		font-weight: 700;
+	}
+
+	/* ── Chapter sections ── */
+	.chapter-section {
+		padding: 3.5rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.chapter-kicker {
+		display: block;
+		margin-bottom: 2rem;
+	}
+
+	/* ── Chapter subsections ── */
+	.chapter-subsection {
+		display: grid;
+		grid-template-columns: 16rem minmax(0, 1fr);
+		gap: 2rem;
+		padding: 2rem 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.chapter-subsection:first-of-type {
+		border-top: 0;
+		padding-top: 0;
+	}
+
+	.chapter-subheading {
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		padding-top: 0.1rem;
+	}
+
+	.chapter-body {
+		display: grid;
+		gap: 1rem;
+		max-width: 52rem;
+	}
+
+	.chapter-body p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	.text-link {
+		color: var(--foreground);
+		font-weight: 600;
+		text-underline-offset: 0.2em;
+	}
+
+	/* ── Images ── */
+	.image-block {
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	.case-image {
+		width: 100%;
+		border: 1px solid var(--border);
+		border-radius: 1.25rem;
+		box-shadow: var(--shadow-large);
+	}
+
+	.image-caption {
+		font-size: 0.9rem !important;
+		color: var(--muted-foreground);
+		line-height: 1.5 !important;
+	}
+
+	/* ── Callout ── */
+	.callout {
+		display: flex;
+		gap: 0.85rem;
+		padding: 1rem 1.25rem;
+		background: var(--muted);
+		border-radius: 0.75rem;
+		border: 1px solid var(--border);
+	}
+
+	.callout-icon {
+		font-size: 1.1rem;
+		line-height: 1.7;
+		flex-shrink: 0;
+	}
+
+	.callout p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	/* ── Body lists ── */
+	.body-label {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+		font-weight: 700;
+	}
+
+	.body-list {
+		margin: 0;
+		padding-left: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.body-list--ordered {
+		padding-left: 1.25rem;
+		list-style: decimal;
+	}
+
+	.body-list li {
+		font-size: 1.08rem;
+		line-height: 1.7;
+	}
+
+	.body-list--nested {
+		padding-left: 1.25rem;
+		list-style: disc;
+	}
+
+	/* ── Structure list (numbered items with descriptions) ── */
+	.structure-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 1rem;
+	}
+
+	.structure-item {
+		display: grid;
+		grid-template-columns: 1.75rem minmax(0, 1fr);
+		gap: 0.85rem;
+		align-items: start;
+	}
+
+	.structure-num {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.75rem;
+		height: 1.75rem;
+		background: var(--foreground);
+		color: var(--background);
+		border-radius: 50%;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 700;
+		flex-shrink: 0;
+	}
+
+	.structure-title {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.5;
+		font-weight: 700;
+	}
+
+	.structure-desc {
+		margin: 0.2rem 0 0;
+		font-size: 1rem;
+		line-height: 1.65;
+		color: var(--muted-foreground);
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 980px) {
+		.hero-subgrid,
+		.meta-strip {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.case-page {
+			width: min(calc(100% - 1.5rem), 78rem);
+			padding-top: 1rem;
+		}
+
+		.case-hero {
+			padding: 4rem 0 3rem;
+		}
+
+		.chapter-subsection {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.hero-text,
+		.chapter-body p,
+		.body-list li,
+		.callout p,
+		.structure-title {
+			font-size: 1.05rem;
+		}
+	}
+</style>
